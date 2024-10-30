@@ -12,4 +12,21 @@ $(document).ready(function() {
 
     });
 
+    $('.button').on('click', function() {
+        let value = $(this).data('value');
+
+        if (value === '=') {
+            try {
+                result = eval(currentInput);
+                display.text(result);
+                currentInput = result;
+            } catch (e) {
+                display.text('Error');
+                currentInput = '';
+            }
+        } else {
+            currentInput += value;
+            display.text(currentInput);
+        }
+    });
 });
